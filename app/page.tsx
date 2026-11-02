@@ -14,7 +14,12 @@ export default function ChooseRide() {
           Pick a <em>ride.</em>
           <span className="sr-only"> Kalinchowk or Mustang: two 4-day motorbike itineraries from Kathmandu</span>
         </h1>
-        <p className="lede">Two plans, four days each. Choose one to open the itinerary — you can switch any time from the header.</p>
+        <p className="lede">
+          Two plans, four days each. Choose one to open the itinerary — you can switch any time from the header.{" "}
+          <Link href="/compare/" className="text-link">
+            Not sure? Compare them →
+          </Link>
+        </p>
       </div>
 
       <div className="chooser-grid">

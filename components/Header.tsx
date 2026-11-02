@@ -3,12 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { tripNav, type TripSlug } from "./nav";
+import { pageNav, type PageKey } from "./nav";
 
 export default function Header() {
   const pathname = usePathname();
-  const slug = (Object.keys(tripNav) as TripSlug[]).find((s) => pathname.startsWith(`/${s}`));
-  const sections = slug ? tripNav[slug].sections : [];
+  const pages = Object.keys(pageNav) as PageKey[];
+  const slug = pages.find((s) => pathname.startsWith(`/${s}`));
+  const sections = slug ? pageNav[slug].sections : [];
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string | null>(null);
 
@@ -56,16 +57,27 @@ export default function Header() {
         </Link>
 
         <nav className="switcher" aria-label="Itinerary">
-          {(Object.keys(tripNav) as TripSlug[]).map((s) => (
-            <Link
-              key={s}
-              href={`/${s}/`}
-              className="switcher-link"
-              aria-current={s === slug ? "page" : undefined}
-            >
-              {tripNav[s].name}
-            </Link>
-          ))}
+          {pages.map((s) => {
+            const { name, switcherShort } = pageNav[s];
+            return (
+              <Link
+                key={s}
+                href={`/${s}/`}
+                className="switcher-link"
+                aria-current={s === slug ? "page" : undefined}
+                aria-label={switcherShort ? name : undefined}
+              >
+                {switcherShort ? (
+                  <>
+                    <span className="switcher-long">{name}</span>
+                    <span className="switcher-short" aria-hidden="true">{switcherShort}</span>
+                  </>
+                ) : (
+                  name
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
         {slug && (
@@ -94,7 +106,7 @@ export default function Header() {
 
       {slug && (
         <div id="site-menu" className="menu" data-open={open} hidden={!open}>
-          <p className="eyebrow">{tripNav[slug].name} itinerary</p>
+          <p className="eyebrow">{pageNav[slug].menuTitle}</p>
           <ul>
             <li>
               <a href="#top" onClick={() => setOpen(false)}>Top</a>

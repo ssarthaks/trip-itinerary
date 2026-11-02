@@ -91,7 +91,7 @@ function tripCard({ index, region, title, titleSize, subtitle, statItems, image,
   );
 }
 
-function homeCard({ left, right }) {
+function splitCard({ heading, sub, foot, left, right }) {
   const panel = (p) =>
     h(
       "div",
@@ -116,15 +116,10 @@ function homeCard({ left, right }) {
       h(
         "div",
         { flexDirection: "column", gap: 18 },
-        h(
-          "div",
-          { flexDirection: "column", color: C.ink },
-          h("div", { fontSize: 124, fontWeight: 700, letterSpacing: -6, lineHeight: 0.9 }, "Pick a"),
-          h("div", { fontFamily: "Instrument", fontStyle: "italic", fontSize: 150, lineHeight: 0.85 }, "ride."),
-        ),
-        h("div", { fontSize: 26, fontWeight: 500, color: C.ink2, lineHeight: 1.3 }, "Two 4-day motorbike itineraries from Kathmandu, into the snow."),
+        h("div", { flexDirection: "column", color: C.ink }, heading),
+        h("div", { fontSize: 26, fontWeight: 500, color: C.ink2, lineHeight: 1.3 }, sub),
       ),
-      h("div", { fontSize: 20, fontWeight: 500, color: C.muted }, "Yamaha MT-15 + Hero XPulse 200 4V"),
+      h("div", { fontSize: 20, fontWeight: 500, color: C.muted }, foot),
     ),
     h("div", { flex: 1, gap: 14 }, panel(left), panel(right)),
   );
@@ -177,10 +172,29 @@ await saveJpeg(
   "mustang",
 );
 
+const kalPhoto = await photo("/images/web/kalinchowk-snow.jpg");
+const musPhoto = await photo("/images/mustang/muktinath-snow.jpg");
+const bold = (text, size) => h("div", { fontSize: size, fontWeight: 700, letterSpacing: size * -0.05, lineHeight: 0.9 }, text);
+const italic = (text, size) => h("div", { fontFamily: "Instrument", fontStyle: "italic", fontSize: size, lineHeight: 0.85 }, text);
+
 await saveJpeg(
-  homeCard({
-    left: { index: "Itinerary 01", name: "Kalinchowk", meta: `4 days · ${kalKm} km · 3,842 m`, image: await photo("/images/web/kalinchowk-snow.jpg") },
-    right: { index: "Itinerary 02", name: "Mustang", meta: `4 days · ${musKm} km · 3,710 m`, image: await photo("/images/mustang/muktinath-snow.jpg") },
+  splitCard({
+    heading: [bold("Pick a", 124), italic("ride.", 150)],
+    sub: "Two 4-day motorbike itineraries from Kathmandu, into the snow.",
+    foot: "Yamaha MT-15 + Hero XPulse 200 4V",
+    left: { index: "Itinerary 01", name: "Kalinchowk", meta: `4 days · ${kalKm} km · 3,842 m`, image: kalPhoto },
+    right: { index: "Itinerary 02", name: "Mustang", meta: `4 days · ${musKm} km · 3,710 m`, image: musPhoto },
   }),
   "home",
+);
+
+await saveJpeg(
+  splitCard({
+    heading: [bold("Kalinchowk", 82), italic("vs", 104), bold("Mustang.", 82)],
+    sub: "Distance, altitude, budget and snow, compared.",
+    foot: "Which 4-day ride should we pick?",
+    left: { index: "Relaxed & cheaper", name: "Kalinchowk", meta: `${kalKm} km · 3,842 m`, image: kalPhoto },
+    right: { index: "Big & snowy", name: "Mustang", meta: `${musKm} km · 3,710 m`, image: musPhoto },
+  }),
+  "compare",
 );

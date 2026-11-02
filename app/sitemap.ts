@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { homeSeo, tripSeo } from "@/data/seo";
+import { compareSeo, homeSeo, tripSeo } from "@/data/seo";
 import { tripList } from "@/data/trips";
 import { absoluteUrl } from "@/lib/site";
 
@@ -22,5 +22,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
       images: [absoluteUrl(tripSeo[trip.slug].image.url), absoluteUrl(trip.hero.src)],
     })),
+    {
+      url: absoluteUrl(compareSeo.path),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      images: [absoluteUrl(compareSeo.image.url)],
+    },
   ];
 }

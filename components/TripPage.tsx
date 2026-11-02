@@ -314,6 +314,9 @@ function Finale({ trip }: { trip: Trip }) {
           <Link href={`/${other.slug}/`} className="pill pill-ghost">
             See the {other.name} plan <span aria-hidden="true">→</span>
           </Link>
+          <Link href="/compare/" className="pill pill-ghost">
+            Compare both
+          </Link>
         </div>
       </div>
       <footer className="credits">

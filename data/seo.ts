@@ -28,6 +28,14 @@ export const tripSeo: Record<Trip["slug"], typeof homeSeo> = {
   },
 };
 
+export const compareSeo = {
+  title: "Kalinchowk vs Mustang · which 4-day ride to pick?",
+  description:
+    "Kalinchowk or Mustang by motorbike? Distance, riding time, altitude, budget, roads and November snow compared side by side, with a clear verdict.",
+  path: "/compare/",
+  image: { url: "/og/compare.jpg", alt: "Kalinchowk vs Mustang: two 4-day motorbike rides from Kathmandu compared" },
+};
+
 const people = authors.map((a) => ({ "@type": "Person", name: a.name }));
 
 export function websiteJsonLd(trips: Trip[]) {
@@ -52,6 +60,33 @@ export function websiteJsonLd(trips: Trip[]) {
           url: absoluteUrl(tripSeo[t.slug].path),
           name: tripSeo[t.slug].title,
         })),
+      },
+    ],
+  };
+}
+
+export function compareJsonLd(trips: Trip[]) {
+  const url = absoluteUrl(compareSeo.path);
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${url}#page`,
+        url,
+        name: compareSeo.title,
+        description: compareSeo.description,
+        inLanguage: "en",
+        isPartOf: { "@id": absoluteUrl("/#website") },
+        about: trips.map((t) => ({ "@id": `${absoluteUrl(tripSeo[t.slug].path)}#trip` })),
+        primaryImageOfPage: absoluteUrl(compareSeo.image.url),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Choose a ride", item: siteUrl.toString() },
+          { "@type": "ListItem", position: 2, name: "Compare", item: url },
+        ],
       },
     ],
   };
