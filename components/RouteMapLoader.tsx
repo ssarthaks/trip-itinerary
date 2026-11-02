@@ -29,7 +29,7 @@ type Props = {
 
 export default function RouteMapLoader({ slug, total, stopNames, overnight, summit, days }: Props) {
   const [day, setDay] = useState(0);
-  const [layer, setLayer] = useState<BaseLayer>("light");
+  const [layer, setLayer] = useState<BaseLayer>("street");
 
   useEffect(() => {
     const onShow = (e: Event) => setDay((e as CustomEvent<number>).detail);
