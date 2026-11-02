@@ -185,6 +185,8 @@ export const kalinchowk: Trip = {
   checklist: commonChecklist,
   weather: { place: "Kuri Village", lat: 27.7594, lon: 86.0475 },
   budget: {
+    basis: "pair",
+    covers: "fuel, three nights, food and the cable car",
     rows: [
       {
         category: "Fuel",
@@ -359,11 +361,57 @@ export const mustang: Trip = {
     },
     {
       title: "Permits",
-      text: "Jomsom and Muktinath sit inside the Annapurna Conservation Area. Sort the ACAP entry permit before you ride.",
+      text: "Jomsom and Muktinath sit inside the Annapurna Conservation Area. As Nepali citizens we just pay a small entry fee at the ACAP checkpoint.",
     },
   ],
   checklist: [...commonChecklist, "Insulated winter gloves", "Swimwear for Tatopani"],
   weather: { place: "Muktinath", lat: 28.8167, lon: 83.8713 },
+  budget: {
+    basis: "rider",
+    covers: "fuel and oil, ACAP entry, three nights, food and a repair buffer",
+    rows: [
+      {
+        category: "Fuel & engine oil",
+        low: 4500,
+        high: 6000,
+        note: "About 750 km with steep high-altitude climbs and rough off-road. Includes a buffer for pricier fuel up high.",
+      },
+      {
+        category: "ACAP entry",
+        low: 100,
+        high: 100,
+        note: "Nominal fee for Nepali citizens at the checkpoint. No TIMS card or international permits needed.",
+      },
+      {
+        category: "Lodging · 3 nights",
+        low: 2400,
+        high: 4500,
+        note: "Budget rooms or teahouses in Tatopani, Muktinath and Pokhara, roughly NPR 800–1,500 a night.",
+      },
+      {
+        category: "Food & drinks",
+        low: 4000,
+        high: 5500,
+        note: "Dal bhat for fuel, hot tea, snacks and bottled water. Prices rise as you climb.",
+      },
+      {
+        category: "Buffer",
+        low: 1500,
+        high: 2000,
+        note: "Punctures or cables, mobile top-ups and the Tatopani hot springs.",
+      },
+    ],
+    insights: [
+      {
+        title: "Teahouse deal",
+        text: "Many Mustang teahouses discount the room, or waive it, if you eat dinner and breakfast there.",
+      },
+      {
+        title: "Carry cash",
+        text: "Draw enough in Pokhara or Beni. ATMs up high fail in the cold, and wallets fail where there's no signal.",
+      },
+    ],
+  },
 };
 
 export const trips = { kalinchowk, mustang } satisfies Record<Trip["slug"], Trip>;

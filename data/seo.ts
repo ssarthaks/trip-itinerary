@@ -22,7 +22,7 @@ export const tripSeo: Record<Trip["slug"], typeof homeSeo> = {
   mustang: {
     title: "Muktinath & Lower Mustang · 4-day motorbike itinerary",
     description:
-      "Kathmandu to Tatopani, the Kali Gandaki gorge and Muktinath (3,710 m), back via Pokhara in 4 days: day-by-day plan, road map, elevation and tips.",
+      "Kathmandu to Tatopani, the Kali Gandaki gorge and Muktinath (3,710 m), back via Pokhara in 4 days: day-by-day plan, road map, elevation and budget.",
     path: "/mustang/",
     image: { url: "/og/mustang.jpg", alt: "Muktinath, chasing November snow: 4 days, 747 km, 3,710 m high point" },
   },

@@ -29,8 +29,12 @@ export type BudgetRow = {
 };
 
 export type Budget = {
+  /** Whether the amounts are for both riders together or for each rider. */
+  basis: "pair" | "rider";
+  /** What the total covers, e.g. "fuel, three nights, food and the cable car". */
+  covers: string;
   rows: BudgetRow[];
-  alternatives: Stat[];
+  alternatives?: Stat[];
   insights: { title: string; text: string }[];
 };
 

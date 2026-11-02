@@ -197,12 +197,21 @@ function Budget({ budget }: { budget: NonNullable<Trip["budget"]> }) {
   return (
     <section id="budget" className="section budget">
       <header className="section-head reveal">
-        <p className="eyebrow">Budget · for two, own bikes</p>
+        <p className="eyebrow">Budget · {budget.basis === "pair" ? "for two, own bikes" : "per rider, own bike"}</p>
         <h2 className="h2 budget-total">
           <span className="currency">NPR</span> {npr(low)}<em>–</em>{npr(high)}
         </h2>
         <p className="lede">
-          About <strong>NPR {npr(low / 2)}–{npr(high / 2)}</strong> each, for fuel, three nights, food and the cable car.
+          {budget.basis === "pair" ? (
+            <>
+              About <strong>NPR {npr(low / 2)}–{npr(high / 2)}</strong> each.
+            </>
+          ) : (
+            <>
+              About <strong>NPR {npr(low * 2)}–{npr(high * 2)}</strong> for both of us.
+            </>
+          )}{" "}
+          Covers {budget.covers}.
         </p>
       </header>
 
@@ -229,17 +238,19 @@ function Budget({ budget }: { budget: NonNullable<Trip["budget"]> }) {
         </ul>
 
         <aside className="budget-side reveal">
-          <div className="card">
-            <p className="eyebrow">Or let an agency do it</p>
-            <dl className="alt-list">
-              {budget.alternatives.map((a) => (
-                <div key={a.label}>
-                  <dd>{a.value}</dd>
-                  <dt>{a.label}</dt>
-                </div>
-              ))}
-            </dl>
-          </div>
+          {budget.alternatives && (
+            <div className="card">
+              <p className="eyebrow">Or let an agency do it</p>
+              <dl className="alt-list">
+                {budget.alternatives.map((a) => (
+                  <div key={a.label}>
+                    <dd>{a.value}</dd>
+                    <dt>{a.label}</dt>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          )}
           {budget.insights.map((i) => (
             <div key={i.title} className="card card-quiet">
               <p className="card-title">{i.title}</p>

@@ -22,6 +22,7 @@ export const tripNav: Record<TripSlug, { name: string; short: string; sections: 
       { id: "route", label: "Route" },
       { id: "climb", label: "Climb" },
       { id: "day-1", label: "Days" },
+      { id: "budget", label: "Budget" },
       { id: "prep", label: "Prep" },
     ],
   },
