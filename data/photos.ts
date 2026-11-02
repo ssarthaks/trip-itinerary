@@ -31,7 +31,7 @@ export function commons(folder: keyof typeof folders, file: string): Photo {
   };
 }
 
-/** Our own reference photos of Kuri village. */
+/** Photos we supplied ourselves (not from Commons, so not in the credits list). */
 export const ours = {
   blueSky: {
     src: "/images/ours/kuri-blue-sky.jpg",
@@ -56,6 +56,12 @@ export const ours = {
     alt: "Blue, orange and red houses on a snowy hillside in Kuri",
     width: 547,
     height: 365,
+  },
+  mt15: {
+    src: "/images/web/mt15.jpg",
+    alt: "Black Yamaha MT-15 with red wheels parked on a dry hillside",
+    width: 1672,
+    height: 941,
   },
 } satisfies Record<string, Photo>;
 

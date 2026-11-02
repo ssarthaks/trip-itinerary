@@ -18,7 +18,7 @@ export const riders = [
   {
     name: "Sarthak",
     bike: "Yamaha MT-15",
-    photo: commons("web", "mt15.jpg"),
+    photo: ours.mt15,
     specs: [
       { value: "155", label: "cc · liquid-cooled" },
       { value: "18.4", label: "PS" },
