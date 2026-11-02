@@ -29,6 +29,7 @@ function Hero({ trip }: { trip: Trip }) {
         </p>
         <h1 className="display" data-long={trip.title.length > 6 || undefined}>
           {trip.title}
+          <span className="sr-only">, {trip.subtitle}: a 4-day motorbike itinerary from Kathmandu</span>
         </h1>
         <p className="hero-sub">{trip.subtitle}</p>
         <dl className="hero-stats">

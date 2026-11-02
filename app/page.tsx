@@ -1,14 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { tripList, totalKm } from "@/data/trips";
+import { websiteJsonLd } from "@/data/seo";
+import JsonLd from "@/components/JsonLd";
 
 export default function ChooseRide() {
   return (
     <main className="chooser">
+      <JsonLd data={websiteJsonLd(tripList)} />
       <div className="chooser-head">
         <p className="eyebrow">Sarthak &amp; Rahul · MT-15 + XPulse 200 4V</p>
         <h1 className="chooser-title">
           Pick a <em>ride.</em>
+          <span className="sr-only"> Kalinchowk or Mustang: two 4-day motorbike itineraries from Kathmandu</span>
         </h1>
         <p className="lede">Two plans, four days each. Choose one to open the itinerary — you can switch any time from the header.</p>
       </div>

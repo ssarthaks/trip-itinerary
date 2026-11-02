@@ -8,7 +8,9 @@
     "build": "next build",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "route:build": "node scripts/build-route.mjs"
+    "route:build": "node scripts/build-route.mjs",
+    "og:build": "node scripts/build-og.mjs",
+    "icons:build": "python3 scripts/build-icons.py"
   },
   "dependencies": {
     "leaflet": "^1.9.4",

@@ -23,7 +23,15 @@ npm run lint
 npm run typecheck
 ```
 
-`npm run build` writes a fully static site to `out/`, which you can host anywhere (Vercel, Netlify, GitHub Pages, S3…).
+`npm run build` writes a fully static site to `out/`. It's set up for Vercel: import the repo and deploy, no config needed.
+
+## SEO & sharing
+
+- Every page has its own title, description, canonical URL, Open Graph and Twitter/X card, plus JSON-LD (`WebSite` on the home page, `TouristTrip` + `BreadcrumbList` on each itinerary).
+- `robots.txt`, `sitemap.xml` (with images) and a web manifest are generated at build time.
+- Share images live in `public/og/` (1200×630 JPEG, under WhatsApp's 300 KB limit). Rebuild them with `npm run og:build` after changing headlines or hero photos.
+- The favicon and app icons come from `assets/brand/escape-logo.png`. Rebuild them with `npm run icons:build` (needs Python 3 + Pillow).
+- Absolute URLs come from Vercel's production domain automatically. If you add a custom domain, set `NEXT_PUBLIC_SITE_URL=https://your-domain` in the Vercel project settings so previews and canonicals use it.
 
 ## Data
 
