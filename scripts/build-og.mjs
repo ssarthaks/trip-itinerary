@@ -43,11 +43,14 @@ const h = (type, style, ...children) => ({
 });
 const img = (src, style) => ({ type: "img", props: { src, style } });
 
+// Same mountain mark as the site header (public/brand/mountain.png, 413×181).
+const logo = `data:image/png;base64,${(await readFile(new URL("public/brand/mountain.png", root))).toString("base64")}`;
+
 const brand = () =>
   h(
     "div",
     { alignItems: "center", gap: 14 },
-    h("div", { width: 44, height: 44, borderRadius: 13, background: C.ink, color: "#fff", fontSize: 15, fontWeight: 700, alignItems: "center", justifyContent: "center" }, "S&R"),
+    img(logo, { width: Math.round((413 / 181) * 36), height: 36 }),
     h("div", { fontSize: 24, fontWeight: 700, color: C.ink, letterSpacing: -0.5 }, "Sarthak & Rahul"),
   );
 

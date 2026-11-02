@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -52,7 +53,7 @@ export default function Header() {
     <>
       <header className="site-header">
         <Link href="/" className="brand" aria-label="Sarthak & Rahul — choose an itinerary">
-          <span className="brand-mark" aria-hidden="true">S&amp;R</span>
+          <Image src="/brand/mountain.png" alt="" width={413} height={181} className="brand-logo" priority />
           <span className="brand-text">Sarthak &amp; Rahul</span>
         </Link>
 

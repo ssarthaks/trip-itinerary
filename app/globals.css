@@ -240,16 +240,9 @@ em {
   justify-self: start;
 }
 
-.brand-mark {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
-  background: var(--ink);
-  color: #fff;
-  font-size: 0.78rem;
-  letter-spacing: 0;
+.brand-logo {
+  width: auto;
+  height: 30px;
 }
 
 .brand-text {
